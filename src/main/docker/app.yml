@@ -1,0 +1,14 @@
+version: '2'
+services:
+    marke-app:
+        image: marke
+        environment:
+            - SPRING_PROFILES_ACTIVE=prod,swagger
+            - SPRING_DATASOURCE_URL=jdbc:postgresql://marke-postgresql:5432/marke
+            - JHIPSTER_SLEEP=10 # gives time for the database to boot before the application
+        ports:
+            - 8080:8080
+    marke-postgresql:
+        extends:
+            file: postgresql.yml
+            service: marke-postgresql
